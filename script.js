@@ -48,4 +48,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);git a
+generateBtn.addEventListener("click", writePassword);
