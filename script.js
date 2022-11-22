@@ -6,57 +6,46 @@ var uppercasechArarr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "
 var lowercasechArarr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numberSetArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-// Assignment code 
-var generateBtn = document.querySelector("#generate");
+function getPasswordCriteria() {
+  var userChoseNumbers = confirm("Do you want numbers in your password?");
+  var options = {
+    userChoseNumbers: userChoseNumbers
+  };
+  return options;
+}
 
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-// Write password to the #password input
-function writePassword() {
-    var correctPrompts = getPrompts();
-    var passwordText = document.querySelector("#password");
-
-    if (correctPrompts) { 
-       var newPassword = generatePassword();
-       passwordText.value = newPassword;
-       } else {
-       passwordText.value = "";
-       }
+function createRandom(length) {
+  var randomNum = Math.floor(Math.random() * length);
+  return randomNum;
 }
 
 function generatePassword() {
-  // trying to get the password to generate
+    var userChose = getPasswordCriteria();
+    var availableChars = [];
+    var passwordArr = [];
+    if(userChose.userChoseNumbers) {
+      availableChars = availableChars.concat(numbers);
+    }
 
-  var password = "";
-  for(var i = o; i < characterLength; i++) {
-      var randomIndex = Math.floor(Math.random() * choiceArr.length);
-      password = password + choiceArr[randomIndex];
-  }
-  return password;
+    for(var i = 0; i < 4; i++) {
+      passwordArr.push(availableChars[createRandom(availableChars.length)])
+    }
+
+
+  return passwordArr.join("")
 }
 
-function getPrompts() {
-  choiceArr = [];
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
 
-  characterLength = parseInt(prompt("How many characters would you like your password to be?"))
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-  if (isNaN(characterLength) || characterLength < 8 || characterLength > 128) {
-    alert("character Length must be a number between 8-128, please try again!")
-    return false;
-  }
-   if(confirm ("Would you like uppercase letters in ypur myNewPassword?")) {
-      choiceArr = choiceArr.concat(uppercasechArarr);
-  }
-   if(confirm("Would you like to use lowercase letters in your myNewPassword?")) {
-    choiceArr = choiceArr.concat(lowercasechArarr);
-  }
-   if(confirm("Would you like Special characters in your myNewPassword?")) {
-    choiceArr = choiceArr.concat(specialCharArr);
-  }
-  if(confirm("Would you like numbers in your myNewPassword?")) {
-    choiceArr = choiceArr.concat(numberSetArr);
-  }
-  return password;
+  passwordText.value = password;
+
 }
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);git a
