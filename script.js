@@ -16,7 +16,7 @@ if (myNewPassword < 8 || myNewPassword > 128){
 
 function generatePassword() {
 
-else if (myNewPassword > 8 && myNewPassword < 129) {
+ if (myNewPassword > 8 && myNewPassword < 129) {
    myNewPassword = confirm ("Would you like uppercase letters in ypur myNewPassword?");
     
 }
