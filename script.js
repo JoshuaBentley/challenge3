@@ -10,6 +10,7 @@ function createdPassword() {
    var passwordOptions = {
       confirmedUppercaseLetters: confirmedUppercaseLetters
    };
+   console.log(passwordOptions)
    return passwordOptions;     
 }
 
@@ -27,7 +28,7 @@ function generatePassword() {
    }
 
    for(var i = 0; i < 4; i++) {
-     createdPasswordArr.push(chosenCharacterArr[createRandom(availableChars.length)])
+     createdPasswordArr.push(chosenCharacterArr[createRandom(chosenCharacterArr.length)])
    }
 
 
