@@ -19,7 +19,7 @@ function createRandom(length) {
 }
 
 function generatePassword() {
-   var userCreatedPassword = getPasswordCriteria();
+   var userCreatedPassword = createdPassword();
    var chosenCharacterArr = [];
    var createdPasswordArr = [];
    if(userCreatedPassword.confirmedUppercaseLetters) {
