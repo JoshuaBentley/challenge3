@@ -11,6 +11,7 @@ function userSetPasswordCriteria() {
   myNewPassword = prompt("Enter the number of characters you want in your myNewPassword");
 if (myNewPassword < 8 || myNewPassword > 128){
     alert ("myNewPassword must be between 8-128 characters, please try again!");
+  }
 }
 
 function generatePassword() {
