@@ -1,45 +1,17 @@
-var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-
-function getPasswordCriteria() {
-  var userChoseNumbers = confirm("Do you want numbers in your password?");
-  var options = {
-    userChoseNumbers: userChoseNumbers
-  };
-  return options;
-}
-
-function createRandom(length) {
-  var randomNum = Math.floor(Math.random() * length);
-  return randomNum;
-}
-
-function generatePassword() {
-    var userChose = getPasswordCriteria();
-    var availableChars = [];
-    var passwordArr = [];
-    if(userChose.userChoseNumbers) {
-      availableChars = availableChars.concat(numbers);
-    }
-
-    for(var i = 0; i < 4; i++) {
-      passwordArr.push(availableChars[createRandom(availableChars.length)])
-    }
-
-
-  return passwordArr.join("")
-}
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var myNewPassword = ""
+var choiceArr = []
+var specialCharArr = [ "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "<", ">", "?", ":", ";", "~" ];
+var uppercasechArarr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var lowercasechArarr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var numberSetArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+ function makePasswordCriteria() {
+  myNewPassword = prompt("Enter the number of characters you want in your myNewPassword");
+if (myNewPassword < 8 || myNewPassword > 128){
+    alert ("myNewPassword must be between 8-128 characters, please try again!");
+    
+ }
+ return myNewPassword;
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
