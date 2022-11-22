@@ -17,12 +17,13 @@ function createdPassword() {
 function createRandom(length) {
    var randomPassword = Math.floor(Math.random() * length);
    return randomPassword;
+   console.log(randomPassword)
 }
 
 function generatePassword() {
    var userCreatedPassword = createdPassword();
    var chosenCharacterArr = [];
-   var createdPasswordArr = [];
+   var createdPasswordArr = []; 
    if(userCreatedPassword.confirmedUppercaseLetters) {
      chosenCharacterArr = chosenCharacterArr.concat;(uppercasechArarr);
    }
@@ -30,7 +31,7 @@ function generatePassword() {
    for(var i = 0; i < 4; i++) {
      createdPasswordArr.push(chosenCharacterArr[createRandom(chosenCharacterArr.length)])
    }
-
+   console.log(createdPasswordArr)
 
  return createdPasswordArr.join("")
 }
