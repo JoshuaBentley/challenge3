@@ -34,7 +34,7 @@ if (myNewPassword) {
 }
 
 for(var i = 0; i < 4; i++) {
-  createdPasswordArr.push(chosenCharacterArr[createRandom(chosenCharacterArr.length)])
+  myNewPassword.push(choiceArr[createRandom(choiceArr.length)])
 }
 console.log(createdPasswordArr)
 
