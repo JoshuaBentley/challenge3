@@ -1,53 +1,62 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-var myNewPassword = ""
-var choiceArr = []
+var characterLength = 8;
+var choiceArr = [];
+
 var specialCharArr = [ "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "<", ">", "?", ":", ";", "~" ];
 var uppercasechArarr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowercasechArarr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var numberSetArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
+var numberSetArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-function generatePassword() {
-myNewPassword = prompt("Enter the number of characters you want in your myNewPassword");
-if (myNewPassword < 8 || myNewPassword > 128){
-    alert ("myNewPassword must be between 8-128 characters, please try again!");
-}
+// Assignment code 
+var generateBtn = document.querySelector("#generate");
 
-else if (myNewPassword > 8 && myNewPassword < 129) {
-   myNewPassword = confirm ("Would you like uppercase letters in ypur myNewPassword?");
-    
-}
 
-if (myNewPassword) {
-   myNewPassword = confirm("Would you like to use lowercase letters in your myNewPassword?")
-}
-
-if (myNewPassword) {
-   myNewPassword = confirm("Would you like Special characters in your myNewPassword?")
-}
-
-if (myNewPassword) {
-  myNewPassword = confirm("Would you like numbers in your myNewPassword?")
-}
-
-if (myNewPassword) {
-}
-
-for(var i = 0; i < 4; i++) {
-  myNewPassword.push(choiceArr[createRandom(choiceArr.length)])
-}
-console.log(createdPasswordArr)
-
-return createdPasswordArr.join("")
-
-}
-
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
+    var correctPrompts = getPrompts();
+    var passwordText = document.querySelector("#password");
+
+    if (correctPrompts) { 
+       var newPassword = generatePassword();
+       passwordText.value = newPassword;
+       } else {
+       passwordText.value = "";
+       }
 }
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
+function generatePassword() {
+  // trying to get the password to generate
+
+  var password = "";
+  for(var i = o; i < characterLength; i++) {
+      var randomIndex = Math.floor(Math.random() * choiceArr.length);
+      password = password + choiceArr[randomIndex];
+  }
+  return password;
+}
+
+function getPrompts() {
+  choiceArr = [];
+
+  characterLength = parseInt(prompt("How many characters would you like your password to be?"))
+
+  if (isNaN(characterLength) || characterLength < 8 || characterLength > 128) {
+    alert("character Length must be a number between 8-128, please try again!")
+    return false;
+  }
+   if(confirm ("Would you like uppercase letters in ypur myNewPassword?")) {
+      choiceArr = choiceArr.concat(uppercasechArarr);
+  }
+   if(confirm("Would you like to use lowercase letters in your myNewPassword?")) {
+    choiceArr = choiceArr.concat(lowercasechArarr);
+  }
+   if(confirm("Would you like Special characters in your myNewPassword?")) {
+    choiceArr = choiceArr.concat(specialCharArr);
+  }
+  if(confirm("Would you like numbers in your myNewPassword?")) {
+    choiceArr = choiceArr.concat(numberSetArr);
+  }
+  return password;
+}
