@@ -1,5 +1,5 @@
 var characterLength = 8;
-var choiceArr = [];
+var userCreatedPasswordArr = [];
 
 var specialCharArr = [ "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "<", ">", "?", ":", ";", "~" ];
 var uppercasechArarr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -31,14 +31,14 @@ function generatePassword() {
 
   var password = "";
   for(var i = o; i < characterLength; i++) {
-      var randomIndex = Math.floor(Math.random() * choiceArr.length);
-      password = password + choiceArr[randomIndex];
+      var randomIndex = Math.floor(Math.random() * userCreatedPasswordArr.length);
+      password = password + userCreatedPasswordArr[randomIndex];
   }
   return password;
 }
 
 function getPrompts() {
-  choiceArr = [];
+  userCreatedPasswordArr = [];
 
   characterLength = parseInt(prompt("How many characters would you like your password to be?"))
 
@@ -47,16 +47,16 @@ function getPrompts() {
     return false;
   }
    if(confirm ("Would you like uppercase letters in ypur myNewPassword?")) {
-      choiceArr = choiceArr.concat(uppercasechArarr);
+      userCreatedPasswordArr = userCreatedPasswordArr.concat(uppercasechArarr);
   }
    if(confirm("Would you like to use lowercase letters in your myNewPassword?")) {
-    choiceArr = choiceArr.concat(lowercasechArarr);
+    userCreatedPasswordArr = userCreatedPasswordArr.concat(lowercasechArarr);
   }
    if(confirm("Would you like Special characters in your myNewPassword?")) {
-    choiceArr = choiceArr.concat(specialCharArr);
+    userCreatedPasswordArr = userCreatedPasswordArr.concat(specialCharArr);
   }
   if(confirm("Would you like numbers in your myNewPassword?")) {
-    choiceArr = choiceArr.concat(numberSetArr);
+    userCreatedPasswordArr = userCreatedPasswordArr.concat(numberSetArr);
   }
   return password;
 }
