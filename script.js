@@ -11,10 +11,10 @@ var generateBtn = document.querySelector("#generate");
 
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", creatingThePassword);
 
 // Write password to the #password input
-function writePassword() {
+function creatingThePassword() {
     var correctPrompts = passwordCritera();
     var passwordText = document.querySelector("#password");
 
