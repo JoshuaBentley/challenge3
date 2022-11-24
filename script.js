@@ -15,7 +15,7 @@ generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
-    var correctPrompts = getPrompts();
+    var correctPrompts = passwordCritera();
     var passwordText = document.querySelector("#password");
 
     if (correctPrompts) { 
@@ -30,20 +30,20 @@ function generatePassword() {
   // trying to get the password to generate
 
   var password = "";
-  for(var i = o; i < characterLength; i++) {
+  for(var i = 0; i < characterLength; i++) {
       var randomIndex = Math.floor(Math.random() * userCreatedPasswordArr.length);
       password = password + userCreatedPasswordArr[randomIndex];
   }
   return password;
 }
 
-function getPrompts() {
+function passwordCritera() {
   userCreatedPasswordArr = [];
 
   characterLength = parseInt(prompt("How many characters would you like your password to be?"))
 
   if (isNaN(characterLength) || characterLength < 8 || characterLength > 128) {
-    alert("character Length must be a number between 8-128, please try again!")
+    alert("character Length must be a number between 8-128, please try again!");
     return false;
   }
    if(confirm ("Would you like uppercase letters in ypur myNewPassword?")) {
